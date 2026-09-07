@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Ladders NZ | Personalised Primary Tutoring, NZ Curriculum Aligned</title>
+<meta name="description" content="Learning Ladders NZ offers personalised, NZ Curriculum-aligned 1-on-1 tutoring for primary school students in Maths and English literacy — online or in person, across New Zealand.">
+<meta name="keywords" content="Primary Tutor NZ, Maths and Literacy Tutor Auckland/NZ, Online Primary School Tutoring New Zealand">
+<meta property="og:title" content="Learning Ladders NZ | Personalised Primary Tutoring">
+<meta property="og:description" content="Building Strong Foundations for Lifelong Learning. Personalised In-Person & Online Primary School Tutoring in New Zealand | Years 1 to 6.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy: #1E3A8A;
+    --navy-deep: #142A66;
+    --teal: #0D9488;
+    --teal-deep: #0B7A70;
+    --amber: #F2A93B;
+    --amber-deep: #B8790A;
+    --amber-text: #8A5807;
+    --paper: #FFFFFF;
+    --paper-dim: #F3F5F7;
+    --ink: #1C2534;
+    --slate: #4E5B6E;
+    --slate-light: #8A97A6;
+    --line: #E1E6EB;
+    --white: #FFFFFF;
+    --on-dark: rgba(255,255,255,0.92);
+    --on-dark-dim: rgba(255,255,255,0.78);
+    --radius-s: 8px;
+    --radius-m: 14px;
+    --max: 1160px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    color:var(--navy-deep);
+    margin:0 0 0.5em 0;
+    font-weight:600;
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0 0 1em 0; color:var(--slate);}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .container{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  section{padding:96px 0;}
+  @media(max-width:720px){ section{padding:64px 0;} .container{padding:0 20px;} }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 28px;
+    border-radius:var(--radius-s);
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    text-decoration:none;
+    cursor:pointer;
+    border:1.5px solid transparent;
+    transition:transform 0.15s ease, background 0.2s ease, border-color .2s ease;
+  }
+  .btn:focus-visible{outline:3px solid var(--teal); outline-offset:2px;}
+  .btn-primary{ background:var(--teal); color:var(--white); }
+  .btn-primary:hover{ background:var(--teal-deep); transform:translateY(-1px); }
+  .btn-ghost{ background:transparent; color:var(--navy-deep); border-color:var(--navy-deep); }
+  .btn-ghost:hover{ background:var(--navy-deep); color:var(--white); }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(245,247,248,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{ display:flex; align-items:center; justify-content:space-between; padding:18px 0; }
+  .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .brand-mark{ width:34px; height:34px; flex-shrink:0; }
+  .brand-name{ font-family:'Fraunces', serif; font-weight:600; font-size:19px; color:var(--navy-deep); }
+  .nav-links{ display:flex; align-items:center; gap:32px; list-style:none; margin:0; padding:0; }
+  .nav-links a{ text-decoration:none; color:var(--ink); font-size:15px; font-weight:500; }
+  .nav-links a:hover{ color:var(--teal-deep); }
+  .nav-cta{ display:flex; align-items:center; gap:14px; }
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:6px; }
+  .nav-toggle span{ display:block; width:24px; height:2px; background:var(--navy-deep); margin:5px 0; }
+
+  @media(max-width:900px){
+    .nav-links{
+      position:absolute; top:100%; left:0; right:0;
+      background:var(--white); border-bottom:1px solid var(--line);
+      flex-direction:column; align-items:flex-start; gap:0;
+      max-height:0; overflow:hidden; transition:max-height 0.25s ease;
+    }
+    .nav-links.open{ max-height:400px; }
+    .nav-links li{ width:100%; }
+    .nav-links a{ display:block; padding:16px 20px; width:100%; border-bottom:1px solid var(--paper-dim); }
+    .nav-toggle{ display:block; }
+    .nav-cta .btn-ghost{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:80px 0 64px; overflow:hidden; position:relative; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center; }
+  @media(max-width:900px){ .hero-grid{ grid-template-columns:1fr; } .hero-visual{ order:-1; } }
+
+  .kia-ora{ font-family:'Fraunces', serif; font-weight:500; font-style:italic; color:var(--teal-deep); font-size:17px; margin-bottom:14px; display:block; }
+  .hero h1{ font-size:clamp(32px, 4.4vw, 50px); }
+  .hero-sub{ font-size:18px; max-width:46ch; margin-bottom:1.6em; color:var(--ink); font-weight:500; }
+  .hero-welcome{ font-size:16px; max-width:52ch; margin-bottom:1.8em; }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+
+  .highlights{ display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; padding-top:32px; border-top:1px solid var(--line); }
+  .highlight-item{ display:flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:var(--navy-deep); }
+  .highlight-item::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+  .highlight-item:nth-child(2)::before{ background:var(--amber); }
+
+  .hero-visual{ position:relative; }
+  .ladder-svg{ width:100%; height:auto; }
+  .rung-label{ font-family:'Work Sans', sans-serif; font-weight:600; font-size:14.5px; fill:var(--navy-deep); }
+  .rung-step{ font-family:'Fraunces', serif; font-weight:600; font-size:13px; fill:var(--teal-deep); }
+  .rung-line{ stroke:var(--slate-light); stroke-width:1.4; opacity:0.55; }
+  .rung-rail{ stroke:var(--navy); stroke-width:3; fill:none; }
+  .rung-dot{ fill:var(--teal); }
+  .rung-dot.is-amber{ fill:var(--amber); }
+
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  .rung-anim{ animation:riseIn 0.6s ease both; }
+
+  /* ---------- About / Method ---------- */
+  .about{ background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start; }
+  @media(max-width:900px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
+  .about-mark{ width:64px; height:64px; margin-bottom:18px; }
+  .about-quote{ font-family:'Fraunces', serif; font-size:20px; font-weight:500; color:var(--ink); line-height:1.5; }
+  .mission-line{ font-size:15px; font-style:italic; color:var(--teal-deep); border-left:3px solid var(--teal); padding-left:16px; margin-top:24px; }
+
+  .pedagogy-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--radius-m); overflow:hidden; margin-top:8px; }
+  @media(max-width:560px){ .pedagogy-grid{ grid-template-columns:1fr; } }
+  .pedagogy-cell{ background:var(--white); padding:26px; }
+  .pedagogy-cell h4{ font-size:15.5px; margin-bottom:6px; font-family:'Work Sans',sans-serif; font-weight:700; color:var(--navy-deep); }
+  .pedagogy-cell p{ font-size:14px; margin:0; }
+
+  /* ---------- Method staircase ---------- */
+  .method{ }
+  .method-head{ max-width:62ch; margin-bottom:56px; }
+  .stairs{ display:grid; grid-template-columns:repeat(6, 1fr); gap:0; align-items:end; }
+  .stair{ position:relative; padding:24px 18px 20px; background:var(--paper-dim); border-top:3px solid var(--teal); }
+  .stair:nth-child(1){ margin-top:110px; }
+  .stair:nth-child(2){ margin-top:88px; }
+  .stair:nth-child(3){ margin-top:66px; }
+  .stair:nth-child(4){ margin-top:44px; }
+  .stair:nth-child(5){ margin-top:22px; }
+  .stair:nth-child(6){ margin-top:0; border-top-color:var(--navy-deep); background:var(--navy-deep); }
+  .stair + .stair{ border-left:1px solid var(--line); }
+  .stair-index{ font-family:'Fraunces', serif; font-weight:600; font-size:13px; color:var(--teal-deep); margin-bottom:8px; display:block; }
+  .stair:nth-child(6) .stair-index{ color:var(--amber); }
+  .stair h4{ font-size:15.5px; margin-bottom:6px; color:var(--ink); font-family:'Work Sans',sans-serif; font-weight:700; }
+  .stair:nth-child(6) h4{ color:var(--white); }
+  .stair p{ font-size:13px; margin:0; }
+  .stair:nth-child(6) p{ color:var(--on-dark-dim); }
+
+  @media(max-width:900px){
+    .stairs{ grid-template-columns:1fr; }
+    .stair{ margin-top:0 !important; border-top:none !important; border-left:3px solid var(--teal); padding:18px 22px; }
+    .stair + .stair{ border-left:3px solid var(--teal); border-top:1px solid var(--line); }
+    .stair:nth-child(6){ border-left-color:var(--navy); }
+  }
+
+  /* ---------- Subjects ---------- */
+  .subjects-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+  @media(max-width:720px){ .subjects-grid{ grid-template-columns:1fr; } }
+  .subject-card{ padding:36px; background:var(--white); border:1px solid var(--line); border-radius:var(--radius-m); }
+  .subject-card h3{ font-size:22px; margin-bottom:10px; }
+  .subject-card ul{ margin:16px 0 0; padding-left:20px; color:var(--slate); font-size:14.5px; }
+  .subject-card li{ margin-bottom:6px; }
+
+  /* ---------- Modes ---------- */
+  .modes{ background:var(--navy-deep); color:var(--white); }
+  .modes h2{ color:var(--white); }
+  .modes .section-lead{ color:var(--on-dark-dim); max-width:56ch; }
+  .modes-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:rgba(255,255,255,0.14); margin-top:48px; border-radius:var(--radius-m); overflow:hidden; }
+  @media(max-width:820px){ .modes-grid{ grid-template-columns:1fr; } }
+  .mode-cell{ background:var(--navy-deep); padding:34px 30px; }
+  .mode-cell h4{ color:var(--white); font-family:'Fraunces',serif; font-size:19px; margin-bottom:10px; }
+  .mode-cell p{ color:var(--on-dark-dim); font-size:14.5px; margin:0; }
+
+  /* ---------- Tools ---------- */
+  .tools-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:44px; }
+  @media(max-width:720px){ .tools-grid{ grid-template-columns:1fr; } }
+  .tools-col h4{ font-size:16px; color:var(--navy-deep); margin-bottom:14px; font-family:'Work Sans',sans-serif; font-weight:700; }
+  .tools-list{ list-style:none; margin:0; padding:0; }
+  .tools-list li{ padding:12px 0; border-bottom:1px solid var(--paper-dim); font-size:14.5px; color:var(--ink); display:flex; align-items:center; gap:10px; }
+  .tools-list li::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--teal); flex-shrink:0; }
+  .tools-item-dark{ color:var(--on-dark) !important; border-color:rgba(255,255,255,0.16) !important; }
+  .tools-item-dark::before{ background:var(--amber) !important; }
+
+  /* ---------- Trust: testimonial + FAQ ---------- */
+  .trust{ background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .trust-grid{ display:grid; grid-template-columns:1fr 1fr; gap:64px; }
+  @media(max-width:900px){ .trust-grid{ grid-template-columns:1fr; gap:44px; } }
+  .testimonial{ padding:36px; border-left:3px solid var(--teal); background:var(--paper); border-radius:0 var(--radius-m) var(--radius-m) 0; }
+  .testimonial p{ font-family:'Fraunces', serif; font-size:19px; color:var(--ink); line-height:1.5; font-weight:500; }
+  .testimonial cite{ display:block; margin-top:16px; font-style:normal; font-size:14px; color:var(--slate); font-weight:600; }
+
+  .faq-item{ border-bottom:1px solid var(--line); }
+  .faq-item:first-child{ border-top:1px solid var(--line); }
+  .faq-q{ width:100%; text-align:left; background:none; border:none; cursor:pointer; padding:20px 4px; display:flex; justify-content:space-between; align-items:center; gap:16px; font-family:'Work Sans', sans-serif; font-size:16px; font-weight:600; color:var(--ink); }
+  .faq-q:focus-visible{ outline:3px solid var(--teal); outline-offset:2px; }
+  .faq-icon{ flex-shrink:0; width:20px; height:20px; position:relative; }
+  .faq-icon::before, .faq-icon::after{ content:""; position:absolute; background:var(--teal-deep); border-radius:2px; }
+  .faq-icon::before{ width:14px; height:2px; top:9px; left:3px; }
+  .faq-icon::after{ width:2px; height:14px; top:3px; left:9px; transition:transform 0.2s ease; }
+  .faq-item.open .faq-icon::after{ transform:rotate(90deg); }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height 0.25s ease; font-size:14.5px; color:var(--slate); }
+  .faq-item.open .faq-a{ max-height:220px; }
+  .faq-a-inner{ padding:0 4px 20px; }
+
+  /* ---------- Enquire (Tally) ---------- */
+  .eoi{ background:var(--paper-dim); }
+  .eoi-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:start; }
+  @media(max-width:900px){ .eoi-grid{ grid-template-columns:1fr; gap:32px; } }
+  .eoi-side p{ max-width:36ch; }
+  .eoi-contact{ margin-top:28px; font-size:14.5px; }
+  .eoi-contact div{ margin-bottom:6px; }
+  .eoi-contact a{ color:var(--teal-deep); font-weight:600; text-decoration:none; }
+  .tally-wrap{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius-m); padding:12px; }
+  .tally-wrap iframe{ width:100%; border:none; min-height:600px; }
+  .tally-fallback{ text-align:center; font-size:13.5px; color:var(--slate); margin:10px 0 2px; }
+  .tally-fallback a{ color:var(--teal-deep); font-weight:600; text-decoration:underline; }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--navy-deep); color:var(--on-dark-dim); padding:56px 0 28px; }
+  .footer-grid{ display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; }
+  .footer-brand{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+  .footer-brand .brand-name{ color:var(--white); }
+  footer .footer-tag{ font-size:14px; max-width:34ch; color:rgba(255,255,255,0.68); }
+  .footer-links{ list-style:none; margin:0; padding:0; display:flex; gap:28px; flex-wrap:wrap; }
+  .footer-links a{ color:var(--on-dark-dim); text-decoration:none; font-size:14px; }
+  .footer-links a:hover{ color:var(--white); }
+  .footer-bottom{ margin-top:44px; padding-top:22px; border-top:1px solid rgba(255,255,255,0.18); font-size:13px; color:rgba(255,255,255,0.6); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+
+  .section-lead{ font-size:17px; max-width:54ch; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .rung-anim{ animation:none; }
+    *{ transition-duration:0.001ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#top" class="brand">
+      <svg class="brand-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M9 30V4" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M25 30V4" stroke="#1E3A8A" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M9 24H25" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M9 17H25" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M9 10H25" stroke="#F2A93B" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-name">Learning Ladders NZ</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About Kavya</a></li>
+      <li><a href="#method">Our Pedagogy</a></li>
+      <li><a href="#subjects">Services</a></li>
+      <li><a href="#modes">Delivery Modes</a></li>
+      <li><a href="#faq">Reviews &amp; FAQ</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#eoi" class="btn btn-ghost">Book a Free 15-Minute Consultation</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HOME -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kia-ora">Kia ora</span>
+        <h1>Building Strong Foundations for Lifelong Learning</h1>
+        <p class="hero-sub">Personalised In-Person &amp; Online Primary School Tutoring in New Zealand | Years 1 to 6</p>
+        <p class="hero-welcome">Welcome to Learning Ladders NZ! Hi, I'm Kavya. I help primary school students build confidence, master core Reading, Writing, and Maths skills, and develop a genuine love for learning through patient, structured 1-on-1 guidance.</p>
+        <div class="hero-ctas">
+          <a href="#eoi" class="btn btn-primary">Book a Free 15-Minute Consultation</a>
+          <a href="#eoi" class="btn btn-ghost">Inquire for Enrolment</a>
+        </div>
+        <div class="highlights">
+          <span class="highlight-item">NZ Curriculum Aligned</span>
+          <span class="highlight-item">1-on-1 Tailored Plans</span>
+          <span class="highlight-item">Flexible Online &amp; In-Person Modes</span>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg class="ladder-svg" viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg">
+          <path class="rung-rail" d="M60 340 L400 60"/>
+          <path class="rung-rail" d="M100 350 L430 75"/>
+          <g class="rung-anim" style="animation-delay:0.05s">
+            <line class="rung-line" x1="55" y1="330" x2="105" y2="340"/>
+            <circle class="rung-dot" cx="80" cy="335" r="5"/>
+            <text class="rung-step" x="118" y="333">01</text>
+            <text class="rung-label" x="118" y="350">Assessment</text>
+          </g>
+          <g class="rung-anim" style="animation-delay:0.15s">
+            <line class="rung-line" x1="118" y1="272" x2="168" y2="282"/>
+            <circle class="rung-dot is-amber" cx="143" cy="277" r="5"/>
+            <text class="rung-step" x="181" y="275">02</text>
+            <text class="rung-label" x="181" y="292">Ladder Plan</text>
+          </g>
+          <g class="rung-anim" style="animation-delay:0.25s">
+            <line class="rung-line" x1="181" y1="214" x2="231" y2="224"/>
+            <circle class="rung-dot" cx="206" cy="219" r="5"/>
+            <text class="rung-step" x="244" y="217">03</text>
+            <text class="rung-label" x="244" y="234">Concrete-Abstract</text>
+          </g>
+          <g class="rung-anim" style="animation-delay:0.35s">
+            <line class="rung-line" x1="244" y1="156" x2="294" y2="166"/>
+            <circle class="rung-dot is-amber" cx="269" cy="161" r="5"/>
+            <text class="rung-step" x="307" y="159">04</text>
+            <text class="rung-label" x="307" y="176">Scaffolded Guidance</text>
+          </g>
+          <g class="rung-anim" style="animation-delay:0.45s">
+            <line class="rung-line" x1="307" y1="98" x2="357" y2="108"/>
+            <circle class="rung-dot" cx="332" cy="103" r="5"/>
+            <text class="rung-step" x="370" y="101">05</text>
+            <text class="rung-label" x="370" y="118">Growth Mindset</text>
+          </g>
+          <g class="rung-anim" style="animation-delay:0.55s">
+            <line class="rung-line" x1="368" y1="45" x2="408" y2="53"/>
+            <circle class="rung-dot is-amber" cx="390" cy="49" r="6"/>
+            <text class="rung-step" x="330" y="30" text-anchor="end">06</text>
+            <text class="rung-label" x="330" y="47" text-anchor="end">Parent Communication</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT KAVYA -->
+  <section class="about" id="about">
+    <div class="container about-grid">
+      <div>
+        <svg class="about-mark" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M32 58C32 58 14 46 14 28C14 16 22 8 32 8C42 8 50 16 50 28C50 46 32 58 32 58Z" stroke="#0D9488" stroke-width="2"/>
+          <path d="M32 8V50" stroke="#1E3A8A" stroke-width="1.5" opacity="0.4"/>
+          <path d="M24 20C26 24 28 27 32 29" stroke="#1E3A8A" stroke-width="1.5" opacity="0.4"/>
+          <path d="M40 20C38 24 36 27 32 29" stroke="#1E3A8A" stroke-width="1.5" opacity="0.4"/>
+        </svg>
+        <h2>Meet Your Tutor</h2>
+        <p class="mission-line">To build foundational confidence, close academic learning gaps, and foster an engaging, stress-free environment where young learners thrive.</p>
+      </div>
+      <div>
+        <p class="about-quote">"Hi, I'm Kavya. With years of passion for primary education, I founded Learning Ladders NZ to give children a supportive space where questions are welcomed and learning is engaging. Every child learns differently, and my goal is to guide them step-by-step up their own ladder of success."</p>
+
+        <h3 style="margin-top:44px; font-size:19px;">How I Teach Kids (Our Pedagogy)</h3>
+        <div class="pedagogy-grid">
+          <div class="pedagogy-cell">
+            <h4>1. Assessment &amp; Diagnostic</h4>
+            <p>Identifying current strengths, gaps, and unique learning styles without pressure.</p>
+          </div>
+          <div class="pedagogy-cell">
+            <h4>2. Individualised Ladder Plan</h4>
+            <p>Custom lesson roadmap mapped directly to the NZ National Curriculum goals.</p>
+          </div>
+          <div class="pedagogy-cell">
+            <h4>3. Interactive &amp; Multisensory Teaching</h4>
+            <p>Using visual aids, digital whiteboards, manipulative tools, and encouraging dialogue.</p>
+          </div>
+          <div class="pedagogy-cell">
+            <h4>4. Confidence Building &amp; Feedback</h4>
+            <p>Praising effort, encouraging resilience, and providing regular progress updates to parents.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD: STEP-BY-STEP -->
+  <section class="method" id="method">
+    <div class="container">
+      <div class="method-head">
+        <h2>How I Teach: Step-by-Step Pedagogical Approach</h2>
+        <p class="section-lead">The full Learning Ladder process, one rung at a time.</p>
+      </div>
+      <div class="stairs">
+        <div class="stair">
+          <span class="stair-index">01</span>
+          <h4>Initial Diagnostic Assessment</h4>
+          <p>I start by evaluating each student's current strengths, learning style, and gaps in a relaxed, encouraging manner without test pressure.</p>
+        </div>
+        <div class="stair">
+          <span class="stair-index">02</span>
+          <h4>Customized 'Ladder' Learning Plan</h4>
+          <p>I design personalized lesson plans aligned with NZ Curriculum achievement objectives, breaking complex topics into small, achievable steps.</p>
+        </div>
+        <div class="stair">
+          <span class="stair-index">03</span>
+          <h4>Concrete-to-Abstract Progression</h4>
+          <p>For younger students, I use concrete objects/manipulatives and visual aids before introducing formal written symbols and equations.</p>
+        </div>
+        <div class="stair">
+          <span class="stair-index">04</span>
+          <h4>Interactive &amp; Scaffolded Guidance</h4>
+          <p>Using the 'I Do, We Do, You Do' framework, I model concepts clearly, guide them through practice together, and then empower independent problem-solving.</p>
+        </div>
+        <div class="stair">
+          <span class="stair-index">05</span>
+          <h4>Positive Reinforcement &amp; Growth Mindset</h4>
+          <p>I actively celebrate progress, normalise mistakes as valuable learning opportunities, and help kids overcome math or reading anxiety.</p>
+        </div>
+        <div class="stair">
+          <span class="stair-index">06</span>
+          <h4>Transparent Parent Communication</h4>
+          <p>I provide regular feedback updates to parents after sessions, keeping them informed of progress, milestones, and quick home-practice tips.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="subjects">
+    <div class="container">
+      <h2>Services &amp; Curriculum Focus</h2>
+      <p class="section-lead">Tailored to Years 1–6, aligned to the New Zealand Curriculum.</p>
+      <div class="subjects-grid" style="margin-top:44px;">
+        <div class="subject-card">
+          <h3>Primary Mathematics</h3>
+          <p>Foundational number knowledge, mental strategies, problem-solving, geometry, and word problems tailored to Years 1–6.</p>
+          <ul>
+            <li>Foundational number knowledge</li>
+            <li>Mental math strategies</li>
+            <li>Addition / subtraction, multiplication / division</li>
+            <li>Fractions</li>
+            <li>Word problem strategies</li>
+            <li>Geometry and basic measurement</li>
+          </ul>
+        </div>
+        <div class="subject-card">
+          <h3>English Literacy (Reading &amp; Writing)</h3>
+          <p>Phonics, vocabulary expansion, reading comprehension strategies, grammar, sentence structure, and creative writing.</p>
+          <ul>
+            <li>Phonics and early reading fluency</li>
+            <li>Vocabulary development</li>
+            <li>Reading comprehension strategies</li>
+            <li>Sentence structure and grammar</li>
+            <li>Spelling patterns</li>
+            <li>Creative essay / narrative writing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY MODES -->
+  <section class="modes" id="modes">
+    <div class="container">
+      <h2>Learning Delivery Modes</h2>
+      <p class="section-lead">Flexible 1-on-1 tutoring sessions, in-person, online, or in small groups.</p>
+      <div class="modes-grid">
+        <div class="mode-cell">
+          <h4>Face-to-Face In-Person</h4>
+          <p>Held in a dedicated, quiet home-tutoring environment with interactive physical resources.</p>
+        </div>
+        <div class="mode-cell">
+          <h4>Live Online Tutoring</h4>
+          <p>Interactive 1-on-1 sessions via Zoom using collaborative online whiteboards and digital learning tools, accessible anywhere in NZ.</p>
+        </div>
+        <div class="mode-cell">
+          <h4>Small Groups</h4>
+          <p>Small group sessions available, with a maximum of 3 students.</p>
+        </div>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tools-col">
+          <h4 style="color:var(--white);">In-Person Sessions</h4>
+          <ul class="tools-list">
+            <li class="tools-item-dark">Physical flashcards</li>
+            <li class="tools-item-dark">Decodable readers</li>
+            <li class="tools-item-dark">Math blocks</li>
+            <li class="tools-item-dark">Guided worksheets</li>
+            <li class="tools-item-dark">Interactive drawing materials</li>
+          </ul>
+        </div>
+        <div class="tools-col">
+          <h4 style="color:var(--white);">Online Sessions</h4>
+          <ul class="tools-list">
+            <li class="tools-item-dark">Live interactive whiteboards (Zoom/Miro)</li>
+            <li class="tools-item-dark">Digital math manipulatives</li>
+            <li class="tools-item-dark">Engaging educational games</li>
+            <li class="tools-item-dark">Shared visual slides</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS + FAQ -->
+  <section class="trust" id="faq">
+    <div class="container trust-grid">
+      <div>
+        <h2>Parent Reviews</h2>
+        <div class="testimonial">
+          <p>"Kavya has transformed my son's attitude towards Maths! He used to feel anxious, but now looks forward to his weekly sessions."</p>
+          <cite>— Sarah M. (Auckland)</cite>
+        </div>
+      </div>
+      <div>
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              What age groups do you tutor?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">Years 1 to 6.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              How long are sessions?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">45 mins or 60 mins.</div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" aria-expanded="false">
+              Do you provide learning materials?
+              <span class="faq-icon"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner">Yes, all customised workbooks/digital tools included.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENQUIRE (TALLY) -->
+  <section class="eoi" id="eoi">
+    <div class="container eoi-grid">
+      <div class="eoi-side">
+        <h2>Inquiry Form</h2>
+        <p>Fill in the form to get started — I'll be in touch to arrange a free 15-minute consultation.</p>
+        <div class="eoi-contact">
+          <div>Email: <a href="mailto:learningladdernz@outlook.com">learningladdernz@outlook.com</a></div>
+          <div>Location: New Zealand</div>
+        </div>
+      </div>
+
+      <div class="tally-wrap">
+        <iframe id="tallyFrame" src="https://tally.so/embed/Y5Q6lB?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="600" title="Learning Ladders NZ Inquiry Form" onload="this.dataset.loaded='true'"></iframe>
+        <p class="tally-fallback">
+          Form not displaying? <a href="https://tally.so/r/Y5Q6lB" target="_blank" rel="noopener">Open the Inquiry Form in a new tab ↗</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg class="brand-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="28" height="28">
+            <path d="M9 30V4" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M25 30V4" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M9 24H25" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M9 17H25" stroke="#0D9488" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M9 10H25" stroke="#F2A93B" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <span class="brand-name">Learning Ladders NZ</span>
+        </div>
+        <p class="footer-tag">Personalised, NZ Curriculum-aligned 1-on-1 tutoring for primary school students — online and in person.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#about">About Kavya</a></li>
+        <li><a href="#subjects">Services</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="mailto:learningladdernz@outlook.com">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Learning Ladders NZ. All rights reserved.</span>
+      <span>learningladdernz@outlook.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(open => {
+        open.classList.remove('open');
+        open.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
